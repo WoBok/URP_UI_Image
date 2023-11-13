@@ -10,13 +10,13 @@ public partial class BlurredImage : Image
     protected override void Awake()
     {
         base.Awake();
-        renderPass = new BlurredImageRenderPass();
-        renderPass.renderPassEvent = RenderPassEvent.BeforeRenderingTransparents;
+        CreatePass();
         material = new Material(Shader.Find("URP Shader/BlurredImage"));
     }
     protected override void OnEnable()
     {
         base.OnEnable();
+        CreatePass();
         RenderPipelineManager.beginCameraRendering += beginCameraRendering;
     }
     protected override void OnDisable()
@@ -49,14 +49,18 @@ public partial class BlurredImage : Image
     protected override void Reset()
     {
         base.Reset();
+        CreatePass();
+        material = new Material(Shader.Find("URP Shader/BlurredImage"));
+    }
+#endif
+    void CreatePass()
+    {
         if (renderPass == null)
         {
             renderPass = new BlurredImageRenderPass();
             renderPass.renderPassEvent = RenderPassEvent.BeforeRenderingTransparents;
         }
-        material = new Material(Shader.Find("URP Shader/BlurredImage"));
     }
-#endif
 }
 //-----------------------------------------------------------------Image-----------------------------------------------------------------//
 

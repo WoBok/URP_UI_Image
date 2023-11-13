@@ -35,11 +35,11 @@ public class BendableImage : Image
         var leftStartPos = new Vector3(-xPoint, -yPoint);
         var leftMiddlePos = new Vector3(-xPoint, 0, curvature * -rectHeight);
         var leftEndPos = new Vector3(-xPoint, yPoint);
-        List<Vector3> leftLinePoints = BezierCurve.GetCurvePoints(new Vector3[] { leftStartPos, leftMiddlePos, leftEndPos }, 0.01f);
+        List<Vector3> leftLinePoints = BezierCurve.GetCurvePoints(new Vector3[] { leftStartPos, leftMiddlePos, leftEndPos }, 30);
         var rightStartPos = new Vector3(xPoint, -yPoint);
         var rightMiddlePos = new Vector3(xPoint, 0, curvature * -rectHeight);
         var rightEndPos = new Vector3(xPoint, yPoint);
-        List<Vector3> rightLinePoints = BezierCurve.GetCurvePoints(new Vector3[] { rightStartPos, rightMiddlePos, rightEndPos }, 0.01f);
+        List<Vector3> rightLinePoints = BezierCurve.GetCurvePoints(new Vector3[] { rightStartPos, rightMiddlePos, rightEndPos }, 30);
 
         List<UIVertex> vertices = new List<UIVertex>();
         vertices.AddRange(GetUIVertex(leftLinePoints, color, rectWidth, rectHeight));
@@ -61,7 +61,6 @@ public class BendableImage : Image
 
         toFill.AddUIVertexStream(vertices, indices);
     }
-
     List<UIVertex> GetUIVertex(List<Vector3> points, Color color, float width, float hight)
     {
         List<UIVertex> uiVertices = new List<UIVertex>();

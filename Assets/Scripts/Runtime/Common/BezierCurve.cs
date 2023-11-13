@@ -4,15 +4,15 @@ using UnityEngine;
 public static class BezierCurve
 {
     /// <summary>
-    /// 给定n+1个控制点，和t的增量，获得曲线上的点，增量越小，曲线越平滑
+    /// 给定n+1个控制点，和生成点的数量，获得曲线上的点，数量越多，曲线越平滑
     /// </summary>
     /// <param name="controlPoints">控制点</param>
-    /// <param name="delta">增量</param>
+    /// <param name="pointsCount">生成点的数量</param>
     /// <returns>曲线上点的集合</returns>
-    public static List<Vector3> GetCurvePoints(Vector3[] controlPoints, float delta)
+    public static List<Vector3> GetCurvePoints(Vector3[] controlPoints, int pointsCount)
     {
         List<Vector3> curvePoints = new List<Vector3>();
-        for (float t = 0; t <= 1; t += delta)
+        for (float t = 0; t <= 1; t += 1f / pointsCount)
             curvePoints.Add(GetBt(controlPoints, t));
         curvePoints.Add(controlPoints[controlPoints.Length - 1]);
         return curvePoints;
