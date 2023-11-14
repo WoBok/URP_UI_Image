@@ -1,4 +1,4 @@
-Shader "URP Shader/BlurredImage" {
+Shader "URP Shader/Blurred Image" {
     Properties {
         [PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" { }
     }

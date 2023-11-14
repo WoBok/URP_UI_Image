@@ -1,13 +1,14 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UnityEditor.UI
 {
-    [CustomEditor(typeof(BendableImage))]
+    [CustomEditor(typeof(PentagonImage))]
     [CanEditMultipleObjects]
-    public class BendableImageEditor : GraphicEditor
+    public class PentagonImageEditor : GraphicEditor
     {
         SerializedProperty m_Sprite;
-        SerializedProperty m_Curvature;
+        SerializedProperty m_SplitDelta;
         GUIContent m_SpriteContent;
 
         protected override void OnEnable()
@@ -18,7 +19,7 @@ namespace UnityEditor.UI
 
             m_Sprite = serializedObject.FindProperty("m_Sprite");
 
-            m_Curvature = serializedObject.FindProperty("m_Curvature");
+            m_SplitDelta = serializedObject.FindProperty("m_SplitDelta");
 
             SetShowNativeSize(true);
         }
@@ -40,7 +41,7 @@ namespace UnityEditor.UI
             SetShowNativeSize(false);
             NativeSizeButtonGUI();
 
-            EditorGUILayout.Slider(m_Curvature, -1, 1, new GUIContent("Curvature"));
+            EditorGUILayout.Slider(m_SplitDelta, -0, 1, new GUIContent("SplitDelta"));
 
             serializedObject.ApplyModifiedProperties();
         }
@@ -56,7 +57,7 @@ namespace UnityEditor.UI
             EditorGUILayout.PropertyField(m_Sprite, m_SpriteContent);
             if (EditorGUI.EndChangeCheck())
             {
-                (serializedObject.targetObject as BendableImage).DisableSpriteOptimizations();
+                (serializedObject.targetObject as PentagonImage).DisableSpriteOptimizations();
             }
         }
     }

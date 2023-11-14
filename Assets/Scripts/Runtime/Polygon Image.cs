@@ -46,8 +46,8 @@ namespace UnityEngine.UI
 
                 currentAngle += angle;
 
-                x = Mathf.Sqrt(2) * cosValue;
-                y = Mathf.Sqrt(2) * sinValue;
+                x = /*Mathf.Sqrt(2) **/ cosValue;
+                y = /*Mathf.Sqrt(2) **/ sinValue;
                 x -= x / 2 * rectWidth;
                 y -= y / 2 * rectHeight;
 
