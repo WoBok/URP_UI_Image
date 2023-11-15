@@ -11,7 +11,7 @@ namespace UnityEngine.UI
         {
             base.Awake();
             CreatePass();
-            material = new Material(Shader.Find("URP Shader/BlurredImage"));
+            material = new Material(Shader.Find("URP Shader/Blurred Image"));
         }
         protected override void OnEnable()
         {
