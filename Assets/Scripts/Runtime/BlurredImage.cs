@@ -41,10 +41,6 @@ namespace UnityEngine.UI
             if (m_RenderPass != null)
                 data.scriptableRenderer.EnqueuePass(m_RenderPass);
         }
-        protected override void OnPopulateMesh(VertexHelper toFill)
-        {
-            base.OnPopulateMesh(toFill);
-        }
 #if UNITY_EDITOR
         protected override void Reset()
         {
